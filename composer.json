@@ -1,0 +1,28 @@
+{
+    "name": "lp-digital/whosthere-bundle",
+    "description": "Notify contributors that the page they are currently working on has some revisions yet from other ones.",
+    "keywords": ["backbee", "bundle", "notification"],
+    "type": "project",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Charles Rouillon",
+            "email": "charles.rouillon@lp-digital.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "backbee/backbee": "~1.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LpDigital\\Bundle\\WhosThereBundle\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

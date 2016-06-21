@@ -1,0 +1,5 @@
+en_US:
+    pending_revisions_exist: "Warning, pending revisions exists for some contributors on this page, you should check it with: " 
+
+fr_FR:
+    pending_revisions_exist: "Attention, certains contributeurs ont des contenus non-validés sur cette page : "

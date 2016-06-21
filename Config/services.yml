@@ -1,0 +1,7 @@
+parameters:
+    whosthere.bundle.listener.class: LpDigital\Bundle\WhosThereBundle\Listener\WhosThereListener
+
+services:
+    whosthere.bundle.listener:
+        class: %whosthere.bundle.listener.class%
+        arguments: ["@bundle.whosthere"]

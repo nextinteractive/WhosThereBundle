@@ -1,0 +1,6 @@
+bundle:
+    name: WhosThereBundle
+    description: Notify contributors that the page they are currently working on has some revisions yet from other ones.
+    author: Charles Rouillon <charles.rouillon@lp-digital.fr>
+    version: 0.1
+    enable: true

@@ -1,0 +1,6 @@
+classcontent.postrender:
+    listeners:
+        - [@whosthere.bundle.listener, onPostRenderClassContent]
+nestednode.page.postrender:
+    listeners:
+        - [@whosthere.bundle.listener, onPostRenderPage]

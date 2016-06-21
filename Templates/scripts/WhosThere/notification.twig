@@ -1,0 +1,16 @@
+<script type="text/javascript">
+require(['hook'], function (hookQueue) {
+    hookQueue.register(function (Core) {
+        Core.Mediator.subscribe('on:content:validate:click', function () {
+            var message = '{{message}}';
+            
+            if (message.length) {
+                var translator = require('component!translator');
+
+                jQuery.extend(translator.catalogs, {{i18n|raw}});
+                require('component!notify').warning(translator.translate('pending_revisions_exist') + message);
+            }
+        });
+    });
+});
+</script>
