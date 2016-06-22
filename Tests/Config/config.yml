@@ -1,0 +1,25 @@
+parameters:
+  debug: false
+
+
+# Content Wrapper
+contentwrapper:
+    namespace:    BackBee\ClassContent
+    protocol:     bb.class
+    adapter:      \BackBee\Stream\ClassWrapper\Adapter\Yaml
+
+renderer:
+    adapter:
+        twig:
+            class: BackBee\Renderer\Adapter\Twig
+            config:
+                enable_autoreload: true
+                enable_cache: false
+                cache_dir: ~
+    path:
+        scriptdir:    Templates/scripts
+        layoutdir:    Layouts
+
+config:
+    save_in_registry: false
+    persistor: [BackBee\Config\Persistor\File]

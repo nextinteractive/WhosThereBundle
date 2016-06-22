@@ -31,13 +31,15 @@ use BackBee\ClassContent\Revision;
  * Bundle notifying contributors that the page they currently working on has
  * some revisions yet from other ones.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  */
 class WhosThere extends AbstractBundle
 {
 
     /**
      * Start method of the bundle
+     *
+     * @codeCoverageIgnore
      */
     public function start()
     {
@@ -46,6 +48,8 @@ class WhosThere extends AbstractBundle
 
     /**
      * Stop method of the bundle
+     *
+     * @codeCoverageIgnore
      */
     public function stop()
     {
@@ -61,6 +65,8 @@ class WhosThere extends AbstractBundle
      *                                                    is exclude from result.
      *
      * @return string[]                                   An array of BB user usernames.
+     *
+     * @codeCoverageIgnore
      */
     public function getPendingRevisionOwners($classcontents = array(), $excludeCurrentUser = true)
     {
@@ -95,28 +101,32 @@ class WhosThere extends AbstractBundle
      *
      * @return string[]                       An array of BB user usernames.
      */
-    private function getRevisionOwners($revisions = [], $excludeCurrentUser = true)
+    private function getRevisionOwners(array $revisions = [], $excludeCurrentUser = true)
     {
         if (empty($revisions)) {
             return [];
         }
 
         $securityIdentity = '';
-        if ($excludeCurrentUser && (null !== $token = $this->getApplication()->getBBUserToken())) {
+        if (true === $excludeCurrentUser && (null !== $token = $this->getApplication()->getBBUserToken())) {
             $securityIdentity = UserSecurityIdentity::fromToken($token) . '';
         }
 
         $owners = [];
         foreach ($revisions as $revision) {
+            if (!($revision instanceof Revision)) {
+                continue;
+            }
+
             if (false === $username = $this->getUsernameFromIdentity($revision->getOwner())) {
                 continue;
             }
 
-            if ($excludeCurrentUser && $revision->getOwner() === $securityIdentity) {
+            if (true === $excludeCurrentUser && '' . $revision->getOwner() === $securityIdentity) {
                 continue;
             }
 
-            $owners[$revision->getOwner()] = $username;
+            $owners[] = $username;
         }
 
         return $owners;

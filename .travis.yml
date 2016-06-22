@@ -1,0 +1,39 @@
+language: php
+
+sudo: false
+
+php:
+    - 5.4
+    - 5.5
+    - 5.6
+    - 7.0
+
+env:
+    global:
+        - SYMFONY_DEPRECATIONS_HELPER=weak
+
+matrix:
+    allow_failures:
+        - php: 7.0
+    fast_finish: true
+
+before_install:
+  - composer self-update
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then export COMPOSER_ROOT_VERSION=dev-master; else export COMPOSER_ROOT_VERSION="$TRAVIS_BRANCH".x-dev; fi;
+ 
+before_script:
+  - phpenv config-rm xdebug.ini
+  - composer install --no-interaction --prefer-source
+
+script:
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_script:
+  - ./vendor/bin/test-reporter
+
+notifications:
+    email: false
+
+addons:
+    code_climate:
+        repo_token: 934446de89ed52db79626581e06aa4d18864a1d16c974be2787b7e22d12a9087
