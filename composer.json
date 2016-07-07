@@ -19,6 +19,11 @@
             "LpDigital\\Bundle\\WhosThereBundle\\": ""
         }
     },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.2",
+        "mikey179/vfsStream": "~1.4.0",
+        "codeclimate/php-test-reporter": "dev-master"
+    },
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {

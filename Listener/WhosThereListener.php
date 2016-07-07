@@ -32,7 +32,7 @@ use LpDigital\Bundle\WhosThereBundle\WhosThere;
 /**
  * Listener to rendering events to add notifications on pending revisions on current page.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  */
 class WhosThereListener implements EventSubscriberInterface
 {
@@ -116,7 +116,7 @@ class WhosThereListener implements EventSubscriberInterface
                 ]
         );
 
-        $event->getRenderer()->setRender(str_replace('</body>', $notification . '</body>', $event->getRender()));
+        $event->getRenderer()->setRender(str_replace('</body>', $notification . '</body>', $event->getRenderer()->getRender()));
     }
 
     /**
